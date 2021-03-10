@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ItemsListComponent :items="items"></ItemsListComponent>
+    <ItemsListComponent :items="items" :loading="loading" @selectItem="onSelectItem"/>
   </div>
 </template>
 
@@ -17,12 +17,21 @@ export default defineComponent({
   },
   setup() {
     const items = computed(() => {return store.state.items});
+    const loading = computed(() => {return store.state.loading});
+
+    const onSelectItem = (item: ItemInterface) => {
+      store.dispatch('selectItem', {
+        id: item.id,
+        selected: !item.selected,
+      })
+    };
+
 
     onMounted(() => {
       store.dispatch('loadItems');
     })
 
-    return { items };
+    return { items, loading, onSelectItem };
   }
 });
 </script>
