@@ -1,0 +1,22 @@
+import { {{ pascalCase name }}sStateInterface, StoreModuleNames} from "@/models/store";
+import {dispatchModuleAction, rootStore} from "@/store";
+
+/**
+ * @name {{ camelCase name }}sStore
+ * @description
+ * Wrapper del store de {{ pascalCase name }}s que deveuelve {{ camelCase name }}sState y repone una acción action<T> genérica
+ * Generado automáticamente con Plop.js
+ */
+const {{ camelCase name }}sStore = {
+    get state(): {{ pascalCase name }}sStateInterface {
+        return rootStore.state.{{ camelCase name }}sState;
+    },
+    action<T>(actionName: string, params?: T): void {
+        dispatchModuleAction(StoreModuleNames.{{ camelCase name }}sState, actionName, params);
+    },
+};
+
+// Exportamos el wrapper usando la convección del API de composición
+export const use{{ pascalCase name }}sStore = () => {
+    return {{ camelCase name }}sStore;
+};

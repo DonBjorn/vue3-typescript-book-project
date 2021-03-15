@@ -1,0 +1,63 @@
+// Creación de instancia del modulo
+import { Module, MutationTree, ActionTree, GetterTree} from "vuex";
+
+import { MutationType, RootStateInterface, {{ pascalCase name }}sStateInterface } from "@/models/store";
+import { initial{{ pascalCase name }}sState } from "@/store/{{ dashCase name }}s/InitialState";
+
+import { {{ pascalCase name }}Interface } from "@/models/{{ dashCase name }}s/{{ pascalCase name }}.interface";
+import apiClient from "@/api-client";
+
+export const mutations: MutationTree<{{ pascalCase name }}sStateInterface> = {
+    loading{{ pascalCase name }}s(state: {{ pascalCase name }}sStateInterface) {
+        state.loading = true;
+    },
+    loaded{{ pascalCase name }}s(state: {{ pascalCase name }}sStateInterface, {{ camelCase name }}s: {{ pascalCase name }}Interface[]){
+        state.{{ camelCase name }}s = {{ camelCase name }}s;
+        state.loading = false;
+    },
+    select{{ pascalCase name }}(state: {{ pascalCase name }}sStateInterface, params: {id: number, selected: boolean}){
+        const {id, selected} = params;
+        const {{ camelCase name }} = state.{{ camelCase name }}s.find(o => o.id === id);
+        if ({{ camelCase name }}){
+            {{ camelCase name }}.selected = selected;
+        }
+    }
+};
+
+export const actions: ActionTree<{{ pascalCase name }}sStateInterface, RootStateInterface> = {
+    load{{ pascalCase name }}s({commit}) {
+        commit(MutationType.{{ camelCase name }}s.loading{{ pascalCase name }}s);
+
+        // Fingiremos que hemos llamado a un recurso de un API
+        // y tarda 1 segundo en devolvernos los datos
+        // usando un setTimeout de JavaScript con 1000 milisegundos como opción
+        setTimeout(() => {
+            apiClient.{{ camelCase name }}s.fetch{{ pascalCase name }}s()
+                .then((data : {{ pascalCase name }}Interface[]) => {
+                    commit(MutationType.{{ camelCase name }}s.loaded{{ pascalCase name }}s, data);
+                }).catch((error) => {
+                console.error(error);
+            })
+        }, 1000)
+    },
+    select{{ pascalCase name }}({ commit }, params: {
+        id: number
+        selected: boolean
+    }) {
+        commit(MutationType.{{ camelCase name }}s.select{{ pascalCase name }}, params)
+    },
+};
+
+export const getters: GetterTree<{{ pascalCase name }}sStateInterface, RootStateInterface> = {};
+
+// Instancia del Store de {{ pascalCase name }}s
+const namespaced: boolean = true;
+const state: {{ pascalCase name }}sStateInterface = initial{{ pascalCase name }}sState;
+
+export const {{ camelCase name }}sState: Module<{{ pascalCase name }}sStateInterface, RootStateInterface> = {
+  namespaced,
+  state,
+  getters,
+  actions,
+  mutations
+};

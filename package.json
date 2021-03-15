@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "cross-env VUE_APP_API_CLIENT=mock vue-cli-service serve --mode development",
     "build": "cross-env VUE_APP_API_CLIENT=live vue-cli-service build --mode production",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "plop": "plop"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -26,6 +27,7 @@
     "@vue/test-utils": "^2.0.0-0",
     "chai": "^4.1.2",
     "cross-env": "^7.0.3",
+    "plop": "^2.7.4",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "sinon": "^9.2.4",
