@@ -6,7 +6,7 @@
     "serve": "cross-env VUE_APP_API_CLIENT=mock vue-cli-service serve --mode development",
     "build": "cross-env VUE_APP_API_CLIENT=live vue-cli-service build --mode production",
     "test:unit": "vue-cli-service test:unit",
-    "plop": "plop"
+    "plop": "npx plop"
   },
   "dependencies": {
     "axios": "^0.21.1",
