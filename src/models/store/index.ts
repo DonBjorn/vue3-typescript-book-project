@@ -8,3 +8,4 @@ export * from './root/RootStore.interface';
 export * from './root/RootStore.model';
 
 export * from './items/ItemsState.interface';
+export * from './locales/LocalesState.interface';

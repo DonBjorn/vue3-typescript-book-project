@@ -1,4 +1,4 @@
-import {ItemsStateInterface} from "@/models/store";
+import {ItemsStateInterface, LocalesStateInterface} from "@/models/store";
 
 /**
  * @name RootStoreInterface
@@ -7,4 +7,5 @@ import {ItemsStateInterface} from "@/models/store";
  */
 export interface RootStoreInterface{
     itemsState: ItemsStateInterface,
+    localesState: LocalesStateInterface
 }
