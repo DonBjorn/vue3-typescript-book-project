@@ -1,9 +1,5 @@
-import {createI18n, LocaleMessages, VueMessageType} from 'vue-i18n';
-import {match} from "sinon";
-
-interface LocalesDataInterface {
-    messages: LocaleMessages<VueMessageType>
-}
+import {createI18n} from 'vue-i18n';
+import {LocalesDataInterface} from "@/plugins/vue-i18n-next-plugin/LocalesData.interface";
 
 /**
  * @name getLocalesData
@@ -15,6 +11,8 @@ export function getLocalesData(): LocalesDataInterface {
 
     // crea la instancia que contrndrá los datos cargados
     const localesData: LocalesDataInterface = {
+        datetimeFormats: {},
+        numberFormats: {},
         messages: {}
     }
 
@@ -24,11 +22,14 @@ export function getLocalesData(): LocalesDataInterface {
         // extrae el nombre del archivo sin extensión
         const matched = key.match(/([A-Za-z\d-_]+)\./i);
 
-        console.log("Matched", matched);
-
         if (matched && matched.length > 1) {
             const localeId = matched[1];
-            // Por cada archivo, guarda los mensajes en la propiedad de messages correspondiente
+            // Por cada archivo
+            // Establece el formato de fechas de la propiedad dateTimeFormats correspondiente
+            localesData.datetimeFormats[localeId] = files(key).datetimeFormats;
+            // Establece el formato de números de la propiedad numberFormats correspondiente
+            localesData.numberFormats[localeId] = files(key).numberFormats;
+            // Guarda los mensajes en la propiedad de messages correspondiente
             localesData.messages[localeId] = files(key).messages;
         }
     });
@@ -40,7 +41,9 @@ export function getLocalesData(): LocalesDataInterface {
 const data: LocalesDataInterface = getLocalesData();
 
 export const i18n = createI18n({
-    locale: 'es-ES',
+    locale: 'it-IT',
     fallbackLocale: 'en-US',
     messages: data.messages,
+    datetimeFormats: data.datetimeFormats,
+    numberFormats: data.numberFormats
 });
