@@ -14,7 +14,7 @@ export const mutations: MutationTree<LocalesStateInterface> = {
         state.availableLocales.forEach((localeInfo) => {
             localeInfo.selected = (localeInfo.locale === localeId);
             if (localeInfo.selected){
-                i18n.global.locale.value = localeInfo.locale;
+                i18n.global.locale = localeInfo.locale;
             }
         })
     }

@@ -26,5 +26,3 @@ export const i18n = createI18n({
     fallbackLocale: 'en-US',
     messages: data.messages,
 });
-
-

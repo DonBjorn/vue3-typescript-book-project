@@ -1,9 +1,13 @@
 // Creación de instancia del modulo
 import {createStore, StoreOptions} from "vuex";
-import {RootStateInterface, RootStoreModel} from "@/models/store";
-import {initialRootState} from "@/store/root/InitialState";
+import {
+    RootStateInterface,
+    RootStoreModel,
+} from "@/models/store";
 
+import {initialRootState} from "@/store/root/InitialState";
 import {itemsState} from "@/store/items/module";
+import {localesState} from "@/store/locales/module";
 
 const storeOptions: StoreOptions<RootStateInterface> = {
     state: initialRootState,
@@ -11,7 +15,8 @@ const storeOptions: StoreOptions<RootStateInterface> = {
      * Aquí se agregan los módulos adicionales
      */
     modules: {
-        itemsState
+        itemsState,
+        localesState,
     }
 };
 
