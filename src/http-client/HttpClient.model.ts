@@ -1,14 +1,11 @@
 import {HttpClientInterface} from "@/http-client/HttpClient.interface";
 import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {HttpRequestParamsInterface} from "@/http-client/HttpRequestParams.interface";
+import {config} from "@/config";
 
 export class HttpClientModel implements HttpClientInterface{
     private getToken() : string {
-        const TOKEN_KEY =
-            process.env && process.env.VUE_APP_TOKEN_KEY
-            ? process.env.VUE_APP_TOKEN_KEY
-            : 'myapp-token';
-
+        const TOKEN_KEY = config.httpClient.tokenKey || 'my-app-token';
         return localStorage.getItem(TOKEN_KEY) || '';
     }
 
