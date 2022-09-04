@@ -3,9 +3,10 @@ import {
     ItemsApiClientInterface,
     ItemsApiClientModel,
 } from '@/models/api-client/items';
+import {config} from "@/config";
 
-const urls: ItemsApiClientUrlsInterface = {fetchItems: '/ruta/a/un/endpoint/de/api/real'}
-// instanciamos ItemsApiClient apuntando a la URL que devuelve datos estáticos
+const urls: ItemsApiClientUrlsInterface = config.items.apiUrls;
+// Instanciamos ItemsApiClient apuntando a la URL que devuelve datos estáticos
 const itemsApiClient: ItemsApiClientInterface = new ItemsApiClientModel(urls)
 // exportamos la instancia
 export default itemsApiClient;
