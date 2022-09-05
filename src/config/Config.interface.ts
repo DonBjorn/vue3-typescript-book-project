@@ -1,4 +1,5 @@
 import {ItemsApiClientUrlsInterface} from "@/models/api-client/items";
+import {ThemeInfoInterface} from "@/components-standalone";
 
 export interface ConfigInterface {
     global: {},
@@ -10,5 +11,6 @@ export interface ConfigInterface {
     },
     items: {
         apiUrls: ItemsApiClientUrlsInterface,
-    }
+    },
+    themes: ThemeInfoInterface[],
 }

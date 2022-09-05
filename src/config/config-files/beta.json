@@ -10,5 +10,25 @@
     "apiUrls": {
       "fetchItems": "/ruta/a/endpoint/BETA/real"
     }
-  }
+  },
+  "themes": [
+    {
+      "id": "default-theme",
+      "name": "Default",
+      "icon": "color_lens",
+      "selected": false
+    },
+    {
+      "id": "dark-theme",
+      "name": "Dark",
+      "icon": "color_lens",
+      "selected": true
+    },
+    {
+      "id": "navy-theme",
+      "name": "Navy Dark",
+      "icon": "color_lens",
+      "selected": false
+    }
+  ]
 }
