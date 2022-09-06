@@ -15,9 +15,9 @@ describe('Item.component.vue', () => {
                 model: model
             }
         })
-        expect(wrapper.text()).to.include('Unit test item 1');
+        expect(wrapper.text()).to.include('Unit text item 1');
         let domEl = wrapper.find('div.name');
-        expect(domEl.text()).to.equal('Unit test item 1');
+        expect(domEl.text()).to.equal('Unit text item 1');
     })
     it('Tiene clase CSS corecta cuando el atributo "selected" es False', () => {
         const model: ItemInterface = {

@@ -5,7 +5,8 @@ import {rootStore} from './store'
 import {i18n} from "@/plugins/vue-i18n-next-plugin";
 import {MyAppScss} from "@/plugins/myapp-scss";
 import {FlagIconsScss} from "@/plugins/flags-icons";
-import "@/assets/scss/flag-icons/index.scss";
+// import "@/assets/scss/flag-icons/index.scss";
+import "@/assets/scss/tailwind/style.css";
 
 createApp(App)
     .use(rootStore)
