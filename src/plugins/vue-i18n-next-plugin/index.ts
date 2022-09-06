@@ -43,7 +43,7 @@ const data: LocalesDataInterface = getLocalesData();
 export const i18n = createI18n({
     locale: 'it-IT',
     fallbackLocale: 'en-US',
-    messages: data.messages,
     datetimeFormats: data.datetimeFormats,
-    numberFormats: data.numberFormats
+    numberFormats: data.numberFormats,
+    messages: data.messages
 });

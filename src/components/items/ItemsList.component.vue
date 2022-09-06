@@ -1,9 +1,13 @@
 <template>
   <div>
     <h3>{{ i18n.t('items.list.header') }}:</h3>
-    <Loader v-show="loading"></Loader>
+    <Loader v-show="loading"/>
     <ul v-show="!loading">
-      <ItemComponent :model="item" v-for="item in items" :key="item.id" @select="onItemSelect"></ItemComponent>
+      <ItemComponent v-for="(item, index) in items"
+                     :key="item.id"
+                     :is-last="index === (items.length - 1)"
+                     :model="item"
+                     @select="onItemSelect"/>
     </ul>
   </div>
 </template>

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import ItemComponent from '@/components/items/children/Item.component.vue'
 import { ItemInterface } from '@/models/items/Item.interface'
 
@@ -10,14 +10,14 @@ describe('Item.component.vue', () => {
             name: 'Unit test item 1',
             selected: false
         }
-        const wrapper = shallowMount(ItemComponent, {
+        const wrapper = mount(ItemComponent, {
             props: {
                 model: model
             }
         })
-        expect(wrapper.text()).to.include('Unit text item 1');
+        expect(wrapper.text()).to.include('Unit test item 1');
         let domEl = wrapper.find('div.name');
-        expect(domEl.text()).to.equal('Unit text item 1');
+        expect(domEl.text()).to.equal('Unit test item 1');
     })
     it('Tiene clase CSS corecta cuando el atributo "selected" es False', () => {
         const model: ItemInterface = {
@@ -25,7 +25,7 @@ describe('Item.component.vue', () => {
             name: 'Unit test item 2',
             selected: false
         }
-        const wrapper = shallowMount(ItemComponent, {
+        const wrapper = mount(ItemComponent, {
             props: {
                 model: model
             }
@@ -44,7 +44,7 @@ describe('Item.component.vue', () => {
             name: 'Unit test item 3',
             selected: true /* cambiando a selected = true aquí */
         }
-        const wrapper = shallowMount(ItemComponent, {
+        const wrapper = mount(ItemComponent, {
             props: {
                 model: model
             }

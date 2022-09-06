@@ -1,7 +1,7 @@
 <template>
   <li :class="cssClass" @click="onClick">
-    <div class="selected-indicator">*</div>
-    <div class="name">{{ model.name }}</div>
+    <ElText tag="div" :text="model.name" add-css="name"/>
+    <ElToggle :checked="model.selected"/>
   </li>
 </template>
 
@@ -9,22 +9,36 @@
 
 import { defineComponent, computed, PropType } from 'vue'
 import { ItemInterface } from '@/models/items/Item.interface'
+import ElText from "@/components/primitives/text/ElText.vue";
+import ElToggle from "@/components/primitives/toggles/ElToggle.vue";
 
 export default defineComponent({
   name: 'ItemComponent',
+  components: {ElText, ElToggle},
   props: {
     model: {
       type: Object as PropType<ItemInterface>
+    },
+    isLast: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['select'],
   setup(props, { emit }) {
     const cssClass = computed(() => {
-      let css = 'item'
-      console.log(props.model?.selected);
-      if (props.model?.selected) {
-        css += ' selected'
+      let css = 'item flex items-center justify-between cursor-pointer border border-l-4 list-none rounded-sm px-3 py-3';
+
+      if (props.model?.selected){
+        css+= ' font-bold bg-pink-200 hover:bg-pink-100 selected';
+      } else {
+        css+= ' text-gray-500 hover:bg-gray-100';
       }
+
+      if (props.isLast){
+        css+= ' border-b-0';
+      }
+
       return css.trim()
     })
     const onClick = () => {
