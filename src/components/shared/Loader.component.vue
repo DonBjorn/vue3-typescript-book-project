@@ -7,6 +7,7 @@
 <script>
 import { defineComponent } from 'vue';
 export default defineComponent({
+  name: "LoaderComponent",
   props: {
     show: Boolean
   }

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import Primitives from '../views/Primitives.vue'
+import WidgetsPlayground from '../views/WidgetsPlayground.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,7 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Primitives',
     component: Primitives,
   },
-
+  {
+    path: '/playground',
+    name: 'Playground',
+    component: WidgetsPlayground,
+  },
 ]
 
 const router = createRouter({

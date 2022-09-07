@@ -13,6 +13,8 @@
       <router-link to="/about">{{ i18n.t('navigation.about') }}</router-link>
       |
       <router-link to="/primitives">Primitives</router-link>
+      |
+      <router-link to="/playground">Widgets Playground</router-link>
     </div>
     <router-view/>
   </div>
